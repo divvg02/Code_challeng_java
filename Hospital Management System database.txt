@@ -1,0 +1,32 @@
+
+
+create database hms;
+use hms;
+
+CREATE TABLE Patient (
+    patientId INT PRIMARY KEY auto_increment,
+    firstName VARCHAR(50),
+    lastName VARCHAR(50),
+    dateOfBirth datetime,
+    gender varchar(10),
+    contactNumber VARCHAR(15),
+    address VARCHAR(255)
+);
+
+CREATE TABLE Doctor(
+    doctorId INT PRIMARY KEY auto_increment,
+    firstName VARCHAR(50),
+    lastName  varchar(50),
+    specialization varchar(50),
+    contactNumber Varchar(15)
+);
+
+CREATE TABLE Appointment (
+    appointmentId INT PRIMARY KEY auto_increment,
+    patientId INT,
+    doctorId int,
+    appointmentDate datetime,
+    description text,
+    FOREIGN KEY (doctorId) REFERENCES Doctor(doctorId),
+	FOREIGN KEY (patientId) REFERENCES Patient(patientId)
+);
